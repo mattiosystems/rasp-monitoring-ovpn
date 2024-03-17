@@ -6,7 +6,7 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/opt/monitoring
+WorkingDirectory=/opt/rasp-monitoring-ovpn
 ExecStart=/usr/local/go/bin/go run main.go
 
 [Install]
