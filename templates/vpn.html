@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VPN</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="background"></div>
+<nav class="nav_container">
+    <ul class="nav">
+        <li class="nav_item">
+            <img id="menuImageMonitoring" src="/static/icons/monitoring.svg" alt="monitoring-icon">
+            <a href="/">Monitoring</a>
+        </li>
+        <li class="nav_item">
+            <img id="menuImageVPN" src="/static/icons/vpn.svg" alt="vpn-icon">
+            <a href="/vpn">VPN</a>
+        </li>
+    </ul>
+</nav>
+<div id="page-content">
+    <h1 class="page-title">Active VPN Connections</h1>
+    <div class="d-flex justify-content-center">
+    <div class="vpn-tile">
+        <table>
+            <tr>
+                <th style="width: 10%;">#</th>
+                <th style="width: 20%;">Hostname</th>
+                <th style="width: 25%;">Client IP address</th>
+                <th style="width: 25%;">Provided IP address</th>
+                <th style="width: 20%;">Connection time</th>
+            </tr>
+            {{ if eq (len .vpn) 0 }}
+            <tr>
+                <td colspan="5" style="text-align: center; padding-top: 40px;">No one is connected at the moment.</td>
+            </tr>
+            {{ else }}
+            {{ range .vpn }}
+            <tr>
+                <td>{{ .ID }}</td>
+                <td>{{ .Hostname }}</td>
+                <td>{{ .ClientIP }}</td>
+                <td>{{ .ProvidedIP }}</td>
+                <td>{{ .Time }}</td>
+            </tr>
+            {{ end }}
+            {{ end }}
+        </table>
+    </div>
+    </div>
+</div>
+<script src="/static/js/menu-image-link.js"></script>
+</body>
+</html>

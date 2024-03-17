@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>System Statistics</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="background"></div>
+    <nav class="nav_container">
+        <ul class="nav">
+            <li class="nav_item">
+                <img id="menuImageMonitoring" src="/static/icons/monitoring.svg" alt="monitoring-icon">
+                <a href="/">Monitoring</a>
+            </li>
+            <li class="nav_item">
+                <img id="menuImageVPN" src="/static/icons/vpn.svg" alt="vpn-icon">
+                <a href="/vpn">VPN</a>
+            </li>
+        </ul>
+    </nav>
+    <div id="page-content">
+        <h1 class="page-title">System Statistics</h1>
+        <div class="d-flex justify-content-center">
+            <div class="row top-row">
+                <div class="col small-tile-container">
+                    <div class="small-tile">
+                        <div class="row">
+                            <div class="col-9 small-tile-content">
+                                <p class="small-tile-title">CPU usage</p>
+                                <progress id="cpu-progress" value="100" max="100" aria-valuemin="2.5 Ghz" aria-valuemax="5 Ghz"></progress>
+                                <p id="cpu-progress-description" class="small-tile-description">X% of X% used</p>
+                            </div>
+                            <div class="col-1 small-tile-icon">
+                                <img src="/static/icons/cpu.svg" alt="cpu-icon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col small-tile-container">
+                    <div class="small-tile">
+                        <div class="row">
+                            <div class="col-9 small-tile-content">
+                                <p class="small-tile-title">RAM usage</p>
+                                <progress id="ram-progress" value="100" max="100"></progress>
+                                <p id="ram-progress-description" class="small-tile-description">X GB of X GB used (X%)</p>
+                            </div>
+                            <div class="col-1 small-tile-icon">
+                                <img src="/static/icons/ram.svg" alt="ram-icon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col small-tile-container">
+                    <div class="small-tile">
+                        <div class="row">
+                            <div class="col-9 small-tile-content">
+                                <p class="small-tile-title">Storage usage</p>
+                                <progress id="storage-progress" value="100" max="100"></progress>
+                                <p id="storage-progress-description" class="small-tile-description">X GB of X GB used (X%)</p>
+                            </div>
+                            <div class="col-1 small-tile-icon">
+                                <img src="/static/icons/storage.svg" alt="storage-icon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col small-tile-container">
+                    <div class="small-tile">
+                        <div class="row">
+                            <div class="col-9 small-tile-content">
+                                <p class="small-tile-title">Temperature</p>
+                                <progress id="temp-progress" value="85" max="85"></progress>
+                                <p id="temp-progress-description" class="small-tile-description">X&deg;C of X&deg;C (X%)</p>
+                            </div>
+                            <div class="col-1 small-tile-icon">
+                                <img src="/static/icons/temperature.svg" alt="temperature-icon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 class="page-title">System Information</h1>
+        <div class="d-flex justify-content-center">
+            <div class="big-tile">
+                <div class="row">
+                    <div class="col">
+                        <div class="big-tile-container">
+                            <p class="big-tile-title">Hostname</p>
+                            <p class="big-tile-description">{{ .sys_hostname }}</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="big-tile-container">
+                            <p class="big-tile-title">Operating System</p>
+                            <p class="big-tile-description">{{ .sys_os }}</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="big-tile-container">
+                            <p class="big-tile-title">Kernel Version</p>
+                            <p class="big-tile-description">{{ .sys_kernel_version }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="big-tile-container">
+                            <p class="big-tile-title">CPU Vendor ID</p>
+                            <p class="big-tile-description">{{ .sys_cpu_vendor_id }}</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="big-tile-container">
+                            <p class="big-tile-title">CPU Model</p>
+                            <p class="big-tile-description">{{ .sys_cpu_model }}</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="big-tile-container">
+                            <p class="big-tile-title">CPU Clock Speed</p>
+                            <p class="big-tile-description">{{ .sys_cpu_mhz }} Mhz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="/static/js/menu-image-link.js"></script>
+<script src="/static/js/fetch-data.js"></script>
+</body>
+</html>
