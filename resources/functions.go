@@ -105,11 +105,12 @@ func GetCPUTemperature() string {
 
 func GetCPUTemperaturePercentage() string {
 	temp, err := strconv.ParseInt(GetCPUTemperature(), 10, 32)
+	maxTemp := 85.0
 	if err != nil {
 		fmt.Println("Failed to convert temperature:", err)
 		return "X"
 	}
-	percent := float64(100 / 85 * temp)
+	percent := float64(temp) / maxTemp * 100
 	return strconv.FormatFloat(percent, 'f', 0, 64)
 }
 
